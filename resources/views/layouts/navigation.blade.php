@@ -9,6 +9,9 @@
             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-nav-link>
+            <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                {{ __('Categories') }}
+            </x-nav-link>
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button class="nav-btn">
@@ -45,6 +48,9 @@
         <div class="mt-4 space-y-2 panel-soft">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                {{ __('Categories') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('profile.edit')">
                 {{ __('Profile') }}
