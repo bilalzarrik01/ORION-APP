@@ -11,12 +11,12 @@
                 </p>
             </div>
             <div class="flex flex-wrap items-center gap-3">
-                <button class="btn btn-secondary">
+                <a class="btn btn-secondary" href="{{ route('links.create') }}">
                     Add new link
-                </button>
-                <button class="btn btn-primary">
+                </a>
+                <a class="btn btn-primary" href="{{ route('categories.create') }}">
                     Create collection
-                </button>
+                </a>
             </div>
         </div>
     </x-slot>
@@ -47,9 +47,9 @@
                         <p class="text-xs uppercase tracking-[0.3em] text-muted">Recent activity</p>
                         <h3 class="mt-2 font-display text-2xl">Latest picks</h3>
                     </div>
-                    <button class="btn btn-secondary">
+                    <a class="btn btn-secondary" href="{{ route('links.index') }}">
                         View all
-                    </button>
+                    </a>
                 </div>
 
                 <div class="mt-6 space-y-4">
@@ -75,7 +75,7 @@
                     <div>
                         <div class="flex items-center justify-between text-sm font-semibold">
                             <span>Product</span>
-                            <span>42%</span>
+                            <span>432%</span>
                         </div>
                         <div class="mt-2 h-2 rounded-full bg-neutral-900">
                             <div class="h-2 w-[42%] rounded-full bg-white"></div>

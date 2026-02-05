@@ -82,6 +82,15 @@
             .brand img {
                 width: 28px;
                 height: 28px;
+                transition: filter 0.2s ease;
+            }
+
+            .brand:hover img,
+            .brand:focus-visible img {
+                animation: glitch 0.6s steps(2, end);
+                filter:
+                    drop-shadow(2px 0 rgba(57, 246, 180, 0.7))
+                    drop-shadow(-2px 0 rgba(234, 247, 241, 0.6));
             }
 
             nav a {
@@ -185,6 +194,15 @@
                 z-index: 2;
             }
 
+            .hero-media:hover .hero-image,
+            .hero-media:focus-visible .hero-image {
+                animation: glitch 0.6s steps(2, end);
+                filter:
+                    drop-shadow(2px 0 rgba(57, 246, 180, 0.7))
+                    drop-shadow(-2px 0 rgba(234, 247, 241, 0.6))
+                    drop-shadow(0 30px 60px rgba(0, 0, 0, 0.75));
+            }
+
             .footer {
                 display: flex;
                 align-items: center;
@@ -203,6 +221,15 @@
                 nav a, .nav-btn { margin-left: 0; }
                 nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
                 .footer { flex-direction: column; gap: 10px; text-align: center; }
+            }
+
+            @keyframes glitch {
+                0% { transform: translate(0, 0); }
+                20% { transform: translate(-1px, 1px) skewX(2deg); }
+                40% { transform: translate(2px, -1px) skewX(-2deg); }
+                60% { transform: translate(-2px, 0) skewX(1deg); }
+                80% { transform: translate(1px, -1px) skewX(-1deg); }
+                100% { transform: translate(0, 0); }
             }
         </style>
     </head>
