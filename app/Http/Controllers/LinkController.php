@@ -13,13 +13,34 @@ class LinkController extends Controller
 {
     public function index()
     {
+        $filters = [
+            'q' => request()->query('q'),
+            'category' => request()->query('category'),
+            'tag' => request()->query('tag'),
+        ];
+
         $links = Link::query()
             ->whereHas('category', fn ($query) => $query->where('user_id', Auth::id()))
             ->with(['category', 'tags'])
+            ->when($filters['q'], function ($query, $q) {
+                $query->where('title', 'like', '%' . $q . '%');
+            })
+            ->when($filters['category'], function ($query, $categoryId) {
+                $query->where('category_id', $categoryId);
+            })
+            ->when($filters['tag'], function ($query, $tagId) {
+                $query->whereHas('tags', fn ($tagQuery) => $tagQuery->whereKey($tagId));
+            })
             ->latest()
             ->get();
 
-        return view('links.index', compact('links'));
+        $categories = $this->userCategories();
+        $tags = Tag::query()
+            ->whereHas('links.category', fn ($query) => $query->where('user_id', Auth::id()))
+            ->orderBy('name')
+            ->get();
+
+        return view('links.index', compact('links', 'categories', 'tags', 'filters'));
     }
 
     public function create()
